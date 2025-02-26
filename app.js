@@ -11,7 +11,8 @@ app.use(express.static("public"));
 // ROTAS
 app.use("/", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
-})
+});
+
 
 const PORT = process.env.PORT || 3000;
 

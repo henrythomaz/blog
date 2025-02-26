@@ -77,3 +77,37 @@ header {
     font-size: 0.96rem;
     border-radius: 8px;
 }
+.home {
+    width: 100%;
+    min-height: 440px;
+    background: var(--container-color);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.home-content h2 {
+    font-size: 3.5rem;
+    color: var(--bg-color);
+    text-align: center;
+}
+.search-box {
+    background: var(--bg-color);
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 1.5rem;
+}
+.search-box .bg {
+    font-size: 20px;
+    color: var(--text-color);
+}
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+    padding: 10px 0px;
+}
