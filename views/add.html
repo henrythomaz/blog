@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Post</title>
+    <!-- Link do CSS -->
+    <link rel="stylesheet" href="/CSS/style.css">
+    <!-- Include stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 </head>
 <body>
-    
+    <div class="add-post">
+        <h1>Add New Post</h1>
+        <form action="/add" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title" id="" required />
+            <input type="text" name="category" placeholder="category" id="" />
+            <div id="editor-container" style="height: 200px;"></div>
+            <input type="hidden" name="content" id="content" />
+            <input type="file" name="image" accept="image/*" id="" />
+            <button type="submit">Add Post</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor-container', {
+            theme: 'snow',
+        })
+        var form = document.querySelector('form');
+        form.onsubmit = function () {
+            var content = document.querySelector('input[name="content"]');
+            content.value = quill.root.innerHTML;
+        }
+    </script>
 </body>
 </html>
