@@ -26,14 +26,25 @@
         <!-- Post Content -->
         <section class="post-header">
             <div class="header-content post-container">
-                <h2 id="post-subtitle"></h2>
+                <h2 id="post-category"></h2>
                 <!-- Title -->
                 <h1 class="header-title" id="post-title"></h1>
                 <!-- Post Image -->
                 <div id="post-image"></div>
             </div>
         </section>
-        <section class="post-content post-container" id="post-content"></section>
+        <section class="post-content post-container post-text" id="post-content"></section>
+
+        <!-- Share -->
+        <div class="share post-container">
+            <span class="share-title">Share this article</span>
+            <div class="social">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#"><i class="bx bxl-instagram"></i></a>
+                <a href="github.com/henrythomaz"><i class="bx bxl-github"></i></a>
+                <a href="#"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
 
         <!-- Footer -->
         <div class="footer container">
@@ -41,7 +52,7 @@
             <div class="social">
                 <a href="#"><i class="bx bxl-facebook"></i></a>
                 <a href="#"><i class="bx bxl-instagram"></i></a>
-                <a href="github.com/henrythomaz"><i class="bx bxl-github"></i></a>
+                <a href="#"><i class="bx bxl-github"></i></a>
                 <a href="#"><i class="bx bxl-linkedin"></i></a>
             </div>
         </div>
@@ -63,7 +74,7 @@
             })
             .then((post) => {
                 document.getElementById('post-title').innerText = post.title;
-                document.getElementById('post-subtitle').innerText = post.category;
+                document.getElementById('post-category').innerText = post.category;
                 if (post.image) {
                     document.getElementById(
                         "post-image"
