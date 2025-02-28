@@ -41,6 +41,14 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
+    transition: 0.3s;
+}
+header.shadow .nav {
+    background: #073841;
+}
+header.shadow .logo,
+header.shadow .bx {
+    color: var(--bg-color);
 }
 .nav {
     display: flex;

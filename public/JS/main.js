@@ -34,3 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
         postContainer.innerHTML = "<p>Error fetching posts.</p>";
     });
 });
+
+// Header
+let header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    header.classList.toggle("shadow", window.scrollY > 0);
+})
