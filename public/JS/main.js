@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch((error) => {
         console.error("Error fetching posts:", error);
-        const postContainer = document.getElementById('posts');
+        const postContainer = document.getElementById("posts");
         postContainer.innerHTML = "<p>Error fetching posts.</p>";
     });
 });

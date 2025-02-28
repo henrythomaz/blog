@@ -47,7 +47,7 @@ app.get("/posts", (req, res) => {
 })
 
 app.get("/post/:title", (req, res) => {
-    const postTitle = req.params.title.replace(/-/g, '').trim();
+    const postTitle = req.params.title.replace(/-/g, " ").trim();
     db.get (
         "SELECT * FROM posts WHERE TRIM(LOWER(title)) =?",
         [postTitle.toLowerCase()],

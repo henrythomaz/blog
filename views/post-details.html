@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Post Details</title>
+    <!-- Link do CSS -->
+    <link rel="stylesheet" href="/CSS/style.css">
+    <!-- Fonte-icones-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
+        <!-- Header -->
+        <header>
+            <div class="nav container">
+                <!-- Logo -->
+                <a href="#" class="logo">FullStack<span>Blog</span></a>
+                <!-- Nav Direita -->
+                <div class="nav-right">
+                    <a href="/admin" class="admin-btn"><i class='bx bx-user'></i></a>
+                    <a href="/add" class="write-btn"><i class='bx bx-pencil'></i>Write</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <section class="post-header">
+            <div class="header-content post-container">
+                <h2 id="post-subtitle"></h2>
+                <!-- Title -->
+                <h1 class="header-title" id="post-title"></h1>
+                <!-- Post Image -->
+                <div id="post-image"></div>
+            </div>
+        </section>
+        <section class="post-content post-container" id="post-content"></section>
+
+        <!-- Footer -->
+        <div class="footer container">
+            <p>&#169; 2025 by Henry Thomaz</p>
+            <div class="social">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#"><i class="bx bxl-instagram"></i></a>
+                <a href="github.com/henrythomaz"><i class="bx bxl-github"></i></a>
+                <a href="#"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    <!-- Link do JS -->
+    <script src="/JS/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            const postTitle = decodeURIComponent(
+                window.location.pathname.split("/").pop()
+            )
+            .replace(/-/g, " ")
+            .trim();
+            fetch(`/post/${encodeURIComponent(postTitle)}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`)
+                }
+                return response.json();
+            })
+            .then((post) => {
+                document.getElementById('post-title').innerText = post.title;
+                document.getElementById('post-subtitle').innerText = post.category;
+                if (post.image) {
+                    document.getElementById(
+                        "post-image"
+                    ).innerHTML = `<img src="${post.image}" alt="${post.title}">`;
+                }
+                document.getElementById("post-content").innerHTML = post.content;
+            })
+            .catch((error) => {
+                console.error("Error fetching post details:", error);
+                document.getElementById("post-content").innerText =
+                 "Error fetching post details";
+            });
+        });
+    </script>
 </body>
 </html>
