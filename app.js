@@ -82,12 +82,16 @@ app.post("/add", upload.single("image"), (req, res) => {
             }
             res.redirect("/");
         }
-    )
-})
+    );
+});
 
 app.get("/add", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "add.html"));
 });
+
+app.get("/admin", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "admin.html"));
+})
 
 const PORT = process.env.PORT || 3000;
 

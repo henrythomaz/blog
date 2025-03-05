@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+        <!-- Link do CSS -->
+        <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Admin Panel</h1>
+        <a href="/add" class="add-post-link">Add New Post</a>
+        <table id="post-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os posts admin irão aparecer aqui -->
+            </tbody>
+        </table>
+        <a href="/" class="admin-back-link">Back To Home</a>
+    </div>
+    <!-- Js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/posts")
+           .then((response) => response.json())
+           .then((posts) => {
+            const postsTableBody = document.querySelector("#post-table tbody");
+            postsTableBody.innerHTML = posts
+            .map(
+                (post) => `
+                <tr>
+                    <td>
+                        ${
+                            post.image 
+                            ? `<img src="${post.image}" alt="${post.title}">`
+                            : "No Image"
+                        }
+                    </td>
+                    <td>${post.title}</td>
+                    <td>${post.category || "No category"}</td>
+                    <td>
+                        <button class="delete-button data-id="${post.id}">Delete</button>
+                    </td>
+                </tr>
+                `
+            )
+            .join("")
+           });
+        });
+    </script>
+</body>
+</html>
