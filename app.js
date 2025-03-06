@@ -84,6 +84,16 @@ app.post("/add", upload.single("image"), (req, res) => {
         }
     );
 });
+// Deleta a Rota
+app.post("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    db.run("DELETE FROM posts WHERE id = ?", id, (err) => {
+        if (err) {
+            return console.log(err.message);
+        }
+        res.status(200).send({ message: "Post deleted successfully" })
+    });
+});
 
 app.get("/add", (req, res) => {
     res.sendFile(path.join(__dirname, "views", "add.html"));
