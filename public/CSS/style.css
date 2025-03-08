@@ -392,3 +392,21 @@ header.shadow .bx {
     color: var(--second-color);
     margin-top: 1rem; 
 }
+.post-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.5rem;
+    margin-top: 2rem !important;
+}
+.filter-item {
+    font-size: 0.97rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.active-filter {
+    background: var(--second-color);
+    color: var(--bg-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+}

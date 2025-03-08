@@ -33,6 +33,13 @@
             </div>
         </div>
     </section>
+    <!-- Post Filter -->
+    <div class="post-filter container">
+        <span class="filter-item active-filter" data-filter="all">All</span>
+        <span class="filter-item" data-filter="Tecnologia">Techology</span>
+        <span class="filter-item" data-filter="Arte">Art</span>
+        <span class="filter-item" data-filter="programação">Programation</span>
+    </div>
     <!-- Posts -->
     <section class="posts conatainer" id="posts">
         <!-- O Post vai Aparecer Aqui! -->
@@ -48,7 +55,34 @@
             <a href="#"><i class="bx bxl-linkedin"></i></a>
         </div>
     </div>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- Link do JS -->
     <script src="/JS/main.js"></script>
+    <script>
+        // Filter JS
+        $(document).ready(function () {
+            $(".filter-item").click(function () {
+                const value = $(this).attr("data-filter");
+                if (value == "all") {
+                    $(".post").show("1000");
+                }else {
+                    $(".post")
+                    .not("." + value)
+                    .hide("1000");
+                    $(".post")
+                    .filter("." + value)
+                    .show("1000");
+                }
+            });
+            // Botão Ativo
+            $(".filter-item").click(function () {
+                $(this)
+                    .addClass("active-filter")
+                    .siblings()
+                    .removeClass("active-filter");
+            });
+        });
+    </script>
 </body>
 </html>
